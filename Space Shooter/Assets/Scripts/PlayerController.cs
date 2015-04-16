@@ -24,7 +24,8 @@ public class PlayerController : MonoBehaviour {
 	 * object.
 	 */
 	public void FireShot() {
-		GameObject clone = Instantiate (shot, shotSpawn.position, shotSpawn.rotation) as GameObject as GameObject;
+		GameObject clone = Instantiate (shot, shotSpawn.position, shotSpawn.rotation) as GameObject;
+		GetComponent<AudioSource>().Play ();
 	}// end FireShot method
 
 	/**
