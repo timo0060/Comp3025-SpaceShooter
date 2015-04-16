@@ -1,7 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-Project("{F4AD5A8C-F361-653A-8257-0A26832F0EE2}") = "space-shooter", "Assembly-CSharp-vs.csproj", "{27D4D0CC-4EA5-88C2-B477-AC3FB1DE40AC}"
+Project("{862A2E07-5F6E-1F8A-49B5-AE4642B57F2D}") = "Space Shooter", "Assembly-CSharp-vs.csproj", "{28FCF307-BCEB-DF00-C466-08C29A16E02D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{27D4D0CC-4EA5-88C2-B477-AC3FB1DE40AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{27D4D0CC-4EA5-88C2-B477-AC3FB1DE40AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{27D4D0CC-4EA5-88C2-B477-AC3FB1DE40AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{27D4D0CC-4EA5-88C2-B477-AC3FB1DE40AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28FCF307-BCEB-DF00-C466-08C29A16E02D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28FCF307-BCEB-DF00-C466-08C29A16E02D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28FCF307-BCEB-DF00-C466-08C29A16E02D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28FCF307-BCEB-DF00-C466-08C29A16E02D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-											GlobalSection(MonoDevelopProperties) = preSolution
+			GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
@@ -30,6 +30,7 @@ Global
 		$0.TextStylePolicy = $3
 		$3.FileWidth = 120
 		$3.TabWidth = 4
+		$3.IndentWidth = 4
 		$3.EolMarker = Unix
 		$3.inheritsSet = Mono
 		$3.inheritsScope = text/plain
