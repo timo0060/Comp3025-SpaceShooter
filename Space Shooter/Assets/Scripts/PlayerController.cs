@@ -27,18 +27,23 @@ public class PlayerController : MonoBehaviour {
 //		GameObject clone = 
 		Instantiate (shot, shotSpawn.position, shotSpawn.rotation); // as GameObject;
 		GetComponent<AudioSource>().Play ();
-	}// end FireShot method
+	}// end of FireShot method
 
-	/**
-	 * The Update method is called with each Scene (Frame) update
+	/*
+	 * The Update method in Unity is like Unreal Engine's Tick() method
+	 * It gets called each time the frame is redrawn/updated.
 	 */
 	void Update() {
+		//If a fire button was pressed and the firing cooldown time has elapsed then fire again
 		if( Input.GetButton("Fire1") && Time.time > nextFire ) {
 			nextFire = Time.time + fireRate;
 			FireShot();
 		}// end if statement
-	}// end Update method
+	}// end of Update method
 
+	/*
+	 * Same as Update, only for Fixed-Frame updates
+	 */
 	void FixedUpdate() {
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
