@@ -8,10 +8,8 @@ public class GameController : MonoBehaviour {
 	private bool gameOver;
 
 	public GameObject hazard;
-	public GameObject enemy;
 	public Vector3 spawnValue;
 	public int hazardCount;
-	public int enemyCount;
 	public float spawnWait;
 	public float startWait;
 	public float waveWait;
@@ -72,29 +70,13 @@ public class GameController : MonoBehaviour {
 		yield return new WaitForSeconds(startWait);
 
 		while(true) {
-			//Spawn Asteroids
 			for(int i = 0; i < hazardCount; i++) {
 				Vector3 spawnPosition = new Vector3 (Random.Range(-spawnValue.x, spawnValue.x), spawnValue.y, spawnValue.z);
-
-				//Randomize the rotation
 				Quaternion spawnRotation = Quaternion.identity;
 
 				Instantiate (hazard, spawnPosition, spawnRotation);
 
 				//Wait between each Asteroid spawn to avoid collissions with other Asteroids
-				yield return new WaitForSeconds(spawnWait);
-			}//end of for loop
-
-			//Spawn Enemy Ships
-			for(int i = 0; i < enemyCount; i++) {
-				Vector3 spawnPosition = new Vector3 (Random.Range(-spawnValue.x, spawnValue.x), spawnValue.y, spawnValue.z);
-
-				//For enemy ships disable rotation
-				Quaternion spawnRotation = new Quaternion(0F,0F,0F,0F);
-				
-				Instantiate (enemy, spawnPosition, spawnRotation);
-				
-				//Wait between each Enemy spawn to avoid collissions with other Enemies
 				yield return new WaitForSeconds(spawnWait);
 			}//end of for loop
 
@@ -126,7 +108,12 @@ public class GameController : MonoBehaviour {
 	 * Handle the end of games
 	 */
 	public void GameOver() {
-		gameoverText.text = "Game Over!";
-		gameOver = true;
+
+        Invoke("GameOverScreen", 2.0f);
 	}//end of GameOver method
+
+    public void GameOverScreen()
+    {
+        Application.LoadLevel("GameOver");
+    }
 }
