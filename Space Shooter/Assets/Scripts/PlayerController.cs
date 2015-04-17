@@ -24,33 +24,40 @@ public class PlayerController : MonoBehaviour {
 	 * object.
 	 */
 	public void FireShot() {
-		GameObject clone = Instantiate (shot, shotSpawn.position, shotSpawn.rotation) as GameObject as GameObject;
-	}// end FireShot method
+//		GameObject clone = 
+		Instantiate (shot, shotSpawn.position, shotSpawn.rotation); // as GameObject;
+		GetComponent<AudioSource>().Play ();
+	}// end of FireShot method
 
-	/**
-	 * The Update method is called with each Scene (Frame) update
+	/*
+	 * The Update method in Unity is like Unreal Engine's Tick() method
+	 * It gets called each time the frame is redrawn/updated.
 	 */
 	void Update() {
+		//If a fire button was pressed and the firing cooldown time has elapsed then fire again
 		if( Input.GetButton("Fire1") && Time.time > nextFire ) {
 			nextFire = Time.time + fireRate;
 			FireShot();
 		}// end if statement
-	}// end Update method
+	}// end of Update method
 
+	/*
+	 * Same as Update, only for Fixed-Frame updates
+	 */
 	void FixedUpdate() {
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
 
 		Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
-		rigidbody.velocity = movement * speed;
+		GetComponent<Rigidbody>().velocity = movement * speed;
 
-		rigidbody.position = new Vector3 (
-			Mathf.Clamp(rigidbody.position.x, boundary.xMin, boundary.xMax),
+		GetComponent<Rigidbody>().position = new Vector3 (
+			Mathf.Clamp(GetComponent<Rigidbody>().position.x, boundary.xMin, boundary.xMax),
 			0.0f,
-			Mathf.Clamp(rigidbody.position.z, boundary.zMin, boundary.zMax)
+			Mathf.Clamp(GetComponent<Rigidbody>().position.z, boundary.zMin, boundary.zMax)
 		);
 
-		rigidbody.rotation = Quaternion.Euler (0.0f, 0.0f, rigidbody.velocity.x * -tilt);
+		GetComponent<Rigidbody>().rotation = Quaternion.Euler (0.0f, 0.0f, GetComponent<Rigidbody>().velocity.x * -tilt);
 	}// end FixedUpdate method
 }//end PlayerController class
