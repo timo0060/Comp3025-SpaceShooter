@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameController : MonoBehaviour {
@@ -8,6 +9,8 @@ public class GameController : MonoBehaviour {
 	public float spawnWait;
 	public float startWait;
 	public float waveWait;
+	public Text scoreText;
+	private int score;
 
 	//Instantiate hazards for the player
 	IEnumerator SpawnWaves() {
@@ -30,13 +33,19 @@ public class GameController : MonoBehaviour {
 
 	}//end of SpawnWaves method
 
+	public void AddScore(int newScoreValue) {
+		score += newScoreValue;
+		UpdateScore ();
+	}
+
+	void UpdateScore() {
+		scoreText.text = "Score: " + score;
+	}
+
 	// Use this for initialization
 	void Start () {
+		score = 0;
+		UpdateScore ();
 		StartCoroutine(SpawnWaves());
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }
