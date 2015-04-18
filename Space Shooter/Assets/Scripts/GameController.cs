@@ -104,12 +104,13 @@ public class GameController : MonoBehaviour {
 	 * Handle the end of games
 	 */
 	public void GameOver() {
-
+        //Wait 2 seconds, then call the function "GameOverScreen" when the player dies
         Invoke("GameOverScreen", 2.0f);
 	}//end of GameOver method
 
     public void GameOverScreen()
     {
+        //Load the GameOver scene
         Application.LoadLevel("GameOver");
     }
 }

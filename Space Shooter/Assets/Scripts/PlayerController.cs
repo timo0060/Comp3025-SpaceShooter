@@ -47,11 +47,10 @@ public class PlayerController : MonoBehaviour {
 	 * Same as Update, only for Fixed-Frame updates
 	 */
 	void FixedUpdate() {
-        //float moveHorizontal = Input.GetAxis ("Horizontal");
-        //float moveVertical = Input.GetAxis ("Vertical");
-
+        
+        //Get the direction of the finger from the movement pad
         Vector2 direction = movePad.GetDirection();
-
+        //Set the movement in this vector 3
 		Vector3 movement = new Vector3(direction.x, 0.0f, direction.y);
 
 		GetComponent<Rigidbody>().velocity = movement * speed;
