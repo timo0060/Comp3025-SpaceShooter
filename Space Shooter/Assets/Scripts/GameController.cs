@@ -14,7 +14,6 @@ public class GameController : MonoBehaviour {
 	public float startWait;
 	public float waveWait;
 	public Text scoreText;
-	public Text restartText;
 	public Text gameoverText;
 
 	/*
@@ -24,7 +23,6 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		gameOver = false;
 		restart = false;
-		restartText.text = "";
 		gameoverText.text = "";
 		score = 0;
 		UpdateScore ();
@@ -84,8 +82,6 @@ public class GameController : MonoBehaviour {
 			yield return new WaitForSeconds(waveWait);
 
 			if(gameOver){
-				restartText.text = "Press 'R' to restart the game";
-				restart = true;
 
 				//break out of the while loop
 				break;

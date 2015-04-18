@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour {
 								//Player's Vector3 Transform
 	public float fireRate = 0.5F;
 	private float nextFire = 0.0F;
+    public MoveTouchPad movePad;
+    public FireTouchPad firePad;
 
 	/**
 	 * Create an instance of the shot (Instance of the Bolt prefab)
@@ -35,7 +37,7 @@ public class PlayerController : MonoBehaviour {
 	 */
 	void Update() {
 		//If a fire button was pressed and the firing cooldown time has elapsed then fire again
-		if( Input.GetButton("Fire1") && Time.time > nextFire ) {
+		if( firePad.GetCanFire() && Time.time > nextFire ) {
 			nextFire = Time.time + fireRate;
 			FireShot();
 		}// end if statement
@@ -45,10 +47,12 @@ public class PlayerController : MonoBehaviour {
 	 * Same as Update, only for Fixed-Frame updates
 	 */
 	void FixedUpdate() {
-		float moveHorizontal = Input.GetAxis ("Horizontal");
-		float moveVertical = Input.GetAxis ("Vertical");
+        //float moveHorizontal = Input.GetAxis ("Horizontal");
+        //float moveVertical = Input.GetAxis ("Vertical");
 
-		Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        Vector2 direction = movePad.GetDirection();
+
+		Vector3 movement = new Vector3(direction.x, 0.0f, direction.y);
 
 		GetComponent<Rigidbody>().velocity = movement * speed;
 
